@@ -11,15 +11,17 @@ const GLOBE_RADIUS = 256;
 
 function getDistanceScales() {
   const unitsPerMeter = GLOBE_RADIUS / EARTH_RADIUS;
+  const metersPerUnit = 1 / unitsPerMeter;
   const unitsPerDegree = (Math.PI / 180) * GLOBE_RADIUS;
+  const degreesPerUnit = 1 / unitsPerDegree;
 
   return {
     unitsPerMeter: [unitsPerMeter, unitsPerMeter, unitsPerMeter],
     unitsPerMeter2: [0, 0, 0],
-    metersPerUnit: [1 / unitsPerMeter, 1 / unitsPerMeter, 1 / unitsPerMeter],
+    metersPerUnit: [metersPerUnit, metersPerUnit, metersPerUnit],
     unitsPerDegree: [unitsPerDegree, unitsPerDegree, unitsPerMeter],
     unitsPerDegree2: [0, 0, 0],
-    degreesPerUnit: [1 / unitsPerDegree, 1 / unitsPerDegree, 1 / unitsPerMeter]
+    degreesPerUnit: [degreesPerUnit, degreesPerUnit, degreesPerUnit]
   };
 }
 

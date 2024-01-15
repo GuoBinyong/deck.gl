@@ -82,18 +82,17 @@ export default class OrthographicViewport extends Viewport {
       padding = null,
       flipY = true
     } = props;
-    const zoomX = Array.isArray(zoom) ? zoom[0] : zoom;
-    const zoomY = Array.isArray(zoom) ? zoom[1] : zoom;
+    const [zoomX,zoomY] = Array.isArray(zoom) ? zoom : [zoom,zoom];
     const zoom_ = Math.min(zoomX, zoomY);
-    const scale = Math.pow(2, zoom_);
+    const scale = 2**zoom_;
 
     let distanceScales;
     if (zoomX !== zoomY) {
-      const scaleX = Math.pow(2, zoomX);
-      const scaleY = Math.pow(2, zoomY);
-
+      const scaleX = 2**zoomX;
+      const scaleY = 2**zoomY;
+      const scaleInv = 1 / scale;
       distanceScales = {
-        unitsPerMeter: [scaleX / scale, scaleY / scale, 1],
+        unitsPerMeter: [scaleX * scaleInv, scaleY * scaleInv, 1],
         metersPerUnit: [scale / scaleX, scale / scaleY, 1]
       };
     }
