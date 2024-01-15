@@ -443,8 +443,8 @@ export default class Viewport {
       }
       this.distanceScales = opts.distanceScales || getDistanceScales({latitude, longitude});
     }
-    const scale = Math.pow(2, this.zoom);
-    this.scale = scale;
+  
+    this.scale = 2**this.zoom;
 
     const {position, modelMatrix} = opts;
     let meterOffset: number[] = ZERO_VECTOR;
