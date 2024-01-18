@@ -80,7 +80,7 @@ export default class GlobeViewport extends Viewport {
 
     // Calculate view matrix
     const viewMatrix = new Matrix4().lookAt({eye: [0, -altitude, 0], up: [0, 0, 1]});
-    const scale = Math.pow(2, zoom);
+    const scale = 2**zoom;
     viewMatrix.rotateX(latitude * DEGREES_TO_RADIANS);
     viewMatrix.rotateZ(-longitude * DEGREES_TO_RADIANS);
     viewMatrix.scale(scale / height);

@@ -133,7 +133,7 @@ export default class WebMercatorViewport extends Viewport {
     } = opts;
 
     let {width, height, altitude = 1.5} = opts;
-    const scale = Math.pow(2, zoom);
+    const scale = 2**zoom;
 
     // Silently allow apps to send in 0,0 to facilitate isomorphic render etc
     width = width || 1;
